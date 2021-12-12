@@ -5,6 +5,7 @@ import br.com.giorni.gerenciadororcamento.model.Servico;
 import br.com.giorni.gerenciadororcamento.repository.OrcamentoRepository;
 import br.com.giorni.gerenciadororcamento.repository.ServicoRepository;
 import br.com.giorni.gerenciadororcamento.service.dto.OrcamentoDTO;
+import br.com.giorni.gerenciadororcamento.service.dto.OrcamentoInputDTO;
 import br.com.giorni.gerenciadororcamento.service.dto.ServicoDTO;
 import br.com.giorni.gerenciadororcamento.service.mapper.AuxiliarMapper;
 import br.com.giorni.gerenciadororcamento.service.mapper.MaterialServicoMapper;
@@ -33,6 +34,9 @@ public class OrcamentoService {
     @Autowired
     private ServicoRepository servicoRepository;
 
+    @Autowired
+    private OrcamentoMapper orcamentoMapper;
+
     public boolean save(OrcamentoDTO orcamentoDTO) {
         try {
             System.out.println(orcamentoDTO.getServicos());
@@ -48,9 +52,9 @@ public class OrcamentoService {
             }
 
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-         return false;
+            return false;
         }
     }
 
@@ -80,51 +84,33 @@ public class OrcamentoService {
 
     public Optional<OrcamentoResponse> findById(Long id) {
         Optional<Orcamento> orcamentoOptional = orcamentoRepository.findById(id);
-        OrcamentoResponse orcamentoResponse = new OrcamentoResponse();
+        if (!orcamentoOptional.isPresent()) return Optional.empty();
         List<ServicoResponse> servicoResponse = new ArrayList<>();
         List<MaterialServicoSemServicoResponse> materiais = new ArrayList<>();
         List<AuxiliarSemServicoResponse> auxiliares = new ArrayList<>();
-        if (orcamentoOptional.isPresent()) {
-            Orcamento orcamento = orcamentoOptional.get();
-            if (orcamento.getServicos().size() > 0) {
-                orcamento.getServicos().forEach(servico -> {
-                    if (servico.getMateriais().size() > 0) {
-                        servico.getMateriais().forEach(materialServico -> materiais.add(MaterialServicoMapper.toResponse(materialServico)));
-                    }
-                    if (servico.getAuxiliares().size() > 0) {
-                        servico.getAuxiliares().forEach(auxiliar -> auxiliares.add(AuxiliarMapper.toResponseSemServico(auxiliar)));
-                    }
-                    servicoResponse.add(ServicoMapper.toResponse(servico, materiais, auxiliares));
-                });
-            }
-            orcamentoResponse = OrcamentoMapper.toResponse(orcamento, servicoResponse);
-            return Optional.of(orcamentoResponse);
-        }
-        return Optional.empty();
+        Orcamento orcamento = orcamentoOptional.get();
+        orcamento.getServicos().forEach(servico -> {
+            servico.getMateriais().forEach(materialServico -> materiais.add(MaterialServicoMapper.toResponse(materialServico)));
+            servico.getAuxiliares().forEach(auxiliar -> auxiliares.add(AuxiliarMapper.toResponseSemServico(auxiliar)));
+            servicoResponse.add(ServicoMapper.toResponse(servico, materiais, auxiliares));
+        });
+        return Optional.of(OrcamentoMapper.toResponse(orcamento, servicoResponse));
     }
 
-    public OrcamentoResponse update(OrcamentoDTO orcamentoDTO) {
-        Orcamento orcamento = OrcamentoMapper.toEntity(orcamentoDTO);
+    public OrcamentoResponse update(OrcamentoInputDTO orcamentoDTO) {
+        Orcamento orcamento = orcamentoMapper.toEntity(orcamentoDTO);
         orcamento = orcamentoRepository.save(orcamento);
 
-        OrcamentoResponse orcamentoResponse = new OrcamentoResponse();
         List<ServicoResponse> servicoResponse = new ArrayList<>();
         List<MaterialServicoSemServicoResponse> materiais = new ArrayList<>();
         List<AuxiliarSemServicoResponse> auxiliares = new ArrayList<>();
 
-        if (orcamento.getServicos().size() > 0) {
-            orcamento.getServicos().forEach(servico -> {
-                if (servico.getMateriais().size() > 0) {
-                    servico.getMateriais().forEach(materialServico -> materiais.add(MaterialServicoMapper.toResponse(materialServico)));
-                }
-                if (servico.getAuxiliares().size() > 0) {
-                    servico.getAuxiliares().forEach(auxiliar -> auxiliares.add(AuxiliarMapper.toResponseSemServico(auxiliar)));
-                }
-                servicoResponse.add(ServicoMapper.toResponse(servico, materiais, auxiliares));
-            });
-        }
-        orcamentoResponse = OrcamentoMapper.toResponse(orcamento, servicoResponse);
-        return orcamentoResponse;
+        orcamento.getServicos().forEach(servico -> {
+            servico.getMateriais().forEach(materialServico -> materiais.add(MaterialServicoMapper.toResponse(materialServico)));
+            servico.getAuxiliares().forEach(auxiliar -> auxiliares.add(AuxiliarMapper.toResponseSemServico(auxiliar)));
+            servicoResponse.add(ServicoMapper.toResponse(servico, materiais, auxiliares));
+        });
+        return OrcamentoMapper.toResponse(orcamento, servicoResponse);
 
     }
 
