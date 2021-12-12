@@ -34,7 +34,7 @@ public class ClienteController {
     @GetMapping(path = {"/{id}"})
     public ResponseEntity<?> findById(@PathVariable Long id) {
         return clienteService.findById(id)
-                .map(clienteDTO -> ResponseEntity.ok().body(clienteDTO))
+                .map(clienteSemOrcamentoResponse -> ResponseEntity.ok().body(clienteSemOrcamentoResponse))
                 .orElse(ResponseEntity.notFound().build());
     }
 

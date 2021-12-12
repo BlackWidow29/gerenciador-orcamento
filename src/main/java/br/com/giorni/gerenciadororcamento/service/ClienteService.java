@@ -37,11 +37,11 @@ public class ClienteService {
                 .collect(Collectors.toList());
     }
 
-    public Optional<ClienteDTO> findById(Long id){
+    public Optional<ClienteSemOrcamentoResponse> findById(Long id){
         Optional<Cliente> cliente = clienteRepository.findById(id);
         if (cliente.isPresent()){
-            ClienteDTO clienteDTO = ClienteMapper.toDto(cliente.get());
-            return Optional.of(clienteDTO);
+            ClienteSemOrcamentoResponse clienteSemOrcamentoResponse = ClienteMapper.toResponseSemOrcamento(cliente.get());
+            return Optional.of(clienteSemOrcamentoResponse);
         }
         return Optional.empty();
     }
