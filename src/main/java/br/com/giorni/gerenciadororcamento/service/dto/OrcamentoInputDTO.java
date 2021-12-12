@@ -16,8 +16,7 @@ public class OrcamentoInputDTO {
     @NonNull
     String observacoes;
     @NonNull
-    @JsonProperty("id_servicos")
-    List<Long> idServicos;
+    List<Long> idservicos;
     @JsonProperty("id_cliente")
     long idCliente;
 }

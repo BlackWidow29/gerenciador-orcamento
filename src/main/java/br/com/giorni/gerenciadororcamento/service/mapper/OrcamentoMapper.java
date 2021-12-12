@@ -44,7 +44,7 @@ public class OrcamentoMapper {
     }
 
     public Orcamento toEntity(OrcamentoInputDTO orcamentoDTO) {
-        List<Servico> servicos = orcamentoDTO.getIdServicos().stream().map(id -> servicoRepository.findById(id).orElseThrow(IllegalArgumentException::new)).collect(Collectors.toList());
+        List<Servico> servicos = orcamentoDTO.getIdservicos().stream().map(id -> servicoRepository.findById(id).orElseThrow(IllegalArgumentException::new)).collect(Collectors.toList());
         return Orcamento
                 .builder()
                 .id(orcamentoDTO.getId())
