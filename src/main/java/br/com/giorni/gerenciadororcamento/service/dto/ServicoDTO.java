@@ -8,6 +8,7 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NonNull;
 import lombok.Value;
 
 import java.time.LocalDate;
@@ -36,8 +37,11 @@ public class ServicoDTO {
     @JsonProperty("data_final")
     LocalDate dtFinal;
     @JsonProperty("material_servico")
+    @NonNull
     List<MaterialServicoDTO> materiais;
+    @NonNull
     List<AuxiliarDTO> auxiliares;
+    @NonNull
     List<OrcamentoDTO> orcamentos;
 
 }

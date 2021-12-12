@@ -13,8 +13,8 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class MaterialServicoSemServicoResponse {
-    @JsonProperty("quantidade_material_no_servico")
+    @JsonProperty("quantidade_material")
     private Integer quantidadeMaterialNoServico;
-    @JsonProperty("informacoe_sobre_o_material")
+    @JsonProperty("materiais")
     private MaterialSemFornecedorResponse informacoesSobreOMaterial;
 }

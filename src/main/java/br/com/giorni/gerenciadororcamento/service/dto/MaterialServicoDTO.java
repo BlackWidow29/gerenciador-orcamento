@@ -2,10 +2,7 @@ package br.com.giorni.gerenciadororcamento.service.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Value;
+import lombok.*;
 
 @Data
 @Builder
@@ -14,6 +11,8 @@ public class MaterialServicoDTO {
     Long id;
     @JsonProperty("quantidade_material")
     Integer quantidadeMaterial;
+    @NonNull
     MaterialDTO material;
+    @NonNull
     ServicoDTO servico;
 }
