@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 public class GerenciadorOrcamentoApplication {
 
+	//teste deploy
 	public static void main(String[] args) {
 		SpringApplication.run(GerenciadorOrcamentoApplication.class, args);
 	}
