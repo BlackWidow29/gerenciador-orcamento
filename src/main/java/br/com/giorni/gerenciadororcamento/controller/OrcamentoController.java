@@ -3,6 +3,7 @@ package br.com.giorni.gerenciadororcamento.controller;
 import br.com.giorni.gerenciadororcamento.model.Orcamento;
 import br.com.giorni.gerenciadororcamento.service.OrcamentoService;
 import br.com.giorni.gerenciadororcamento.service.dto.OrcamentoDTO;
+import br.com.giorni.gerenciadororcamento.service.dto.OrcamentoInputDTO;
 import br.com.giorni.gerenciadororcamento.service.response.OrcamentoResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,8 +23,8 @@ public class OrcamentoController {
     private OrcamentoService orcamentoService;
 
     @PostMapping
-    public boolean save(@RequestBody OrcamentoDTO orcamentoDTO) {
-        return orcamentoService.save(orcamentoDTO);
+    public void save(@RequestBody OrcamentoInputDTO orcamentoDTO) {
+        orcamentoService.save(orcamentoDTO);
     }
 
     @GetMapping
@@ -39,7 +40,7 @@ public class OrcamentoController {
     }
 
     @PutMapping
-    public OrcamentoResponse update(@RequestBody OrcamentoDTO orcamentoDTO) {
+    public OrcamentoResponse update(@RequestBody OrcamentoInputDTO orcamentoDTO) {
         return orcamentoService.update(orcamentoDTO);
     }
 
