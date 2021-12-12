@@ -2,10 +2,8 @@ package br.com.giorni.gerenciadororcamento.service;
 
 import br.com.giorni.gerenciadororcamento.model.Empresa;
 import br.com.giorni.gerenciadororcamento.repository.EmpresaRepository;
-import br.com.giorni.gerenciadororcamento.repository.EnderecoRepository;
 import br.com.giorni.gerenciadororcamento.service.dto.EmpresaDTO;
 import br.com.giorni.gerenciadororcamento.service.mapper.EmpresaMapper;
-import br.com.giorni.gerenciadororcamento.service.mapper.EnderecoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +16,6 @@ public class EmpresaService {
 
     @Autowired
     private EmpresaRepository empresaRepository;
-
-    @Autowired
-    private EnderecoRepository enderecoRepository;
-
-    @Autowired
-    private EnderecoService enderecoService;
 
     public Empresa save(EmpresaDTO empresaDTO) {
         Empresa empresa = EmpresaMapper.toEntity(empresaDTO);

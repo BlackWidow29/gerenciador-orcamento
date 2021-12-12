@@ -16,10 +16,15 @@ public class ClienteDTO {
     String tipoCliente;
     String email;
     String nome;
-    EnderecoDTO endereco;
     List<OrcamentoDTO> orcamentos;
     @JsonProperty("cpf_cnpj")
     String cpfCnpj;
     String telefone;
+    String numero;
+    String cep;
+    String cidade;
+    String bairro;
+    String logradouro;
+    String estado;
 
 }

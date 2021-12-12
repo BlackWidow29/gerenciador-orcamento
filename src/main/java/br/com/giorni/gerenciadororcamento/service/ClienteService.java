@@ -2,7 +2,6 @@ package br.com.giorni.gerenciadororcamento.service;
 
 import br.com.giorni.gerenciadororcamento.model.Cliente;
 import br.com.giorni.gerenciadororcamento.repository.ClienteRepository;
-import br.com.giorni.gerenciadororcamento.repository.EnderecoRepository;
 import br.com.giorni.gerenciadororcamento.service.dto.ClienteDTO;
 import br.com.giorni.gerenciadororcamento.service.mapper.ClienteMapper;
 import br.com.giorni.gerenciadororcamento.service.response.ClienteSemOrcamentoResponse;
@@ -18,12 +17,6 @@ public class ClienteService {
 
     @Autowired
     private ClienteRepository clienteRepository;
-
-    @Autowired
-    private EnderecoRepository enderecoRepository;
-
-    @Autowired
-    private EnderecoService enderecoService;
 
     public Cliente save(ClienteDTO clienteDTO) {
         Cliente cliente = ClienteMapper.toEntity(clienteDTO);

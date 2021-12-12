@@ -12,5 +12,10 @@ public class EmpresaDTO {
     Long id;
     @JsonProperty("nome_fantasia")
     String nomeFantasia;
-    EnderecoDTO endereco;
+    String numero;
+    String cep;
+    String cidade;
+    String bairro;
+    String logradouro;
+    String estado;
 }

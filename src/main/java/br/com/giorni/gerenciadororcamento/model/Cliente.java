@@ -22,12 +22,18 @@ public class Cliente {
     private String tipoCliente;
     private String email;
     private String nome;
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    @JoinColumn(name = "endereco_id", referencedColumnName = "id")
-    private Endereco endereco;
+//    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+//    @JoinColumn(name = "endereco_id", referencedColumnName = "id")
+//    private Endereco endereco;
     @OneToMany(mappedBy = "cliente")
     private List<Orcamento> orcamentos;
     @Column(name = "cpf_cnpj")
     private String cpfCnpj;
     private String telefone;
+    private String numero;
+    private String cep;
+    private String cidade;
+    private String bairro;
+    private String logradouro;
+    private String estado;
 }

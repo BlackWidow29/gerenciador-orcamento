@@ -1,6 +1,5 @@
 package br.com.giorni.gerenciadororcamento.service.response;
 
-import br.com.giorni.gerenciadororcamento.service.dto.EnderecoDTO;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,8 +16,13 @@ public class ClienteSemOrcamentoResponse {
     private String tipoCliente;
     private String email;
     private String nome;
-    private EnderecoResponse endereco;
     @JsonProperty("cpf_cnpj")
     private String cpfCnpj;
     private String telefone;
+    private String numero;
+    private String cep;
+    private String cidade;
+    private String bairro;
+    private String logradouro;
+    private String estado;
 }

@@ -14,5 +14,10 @@ public class EmpresaResponse {
     private Long id;
     @JsonProperty("nome_fantasia")
     private String nomeFantasia;
-    private EnderecoResponse endereco;
+    private String numero;
+    private String cep;
+    private String cidade;
+    private String bairro;
+    private String logradouro;
+    private String estado;
 }
