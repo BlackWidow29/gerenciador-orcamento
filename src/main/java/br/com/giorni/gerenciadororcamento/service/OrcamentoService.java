@@ -37,8 +37,20 @@ public class OrcamentoService {
     @Autowired
     private OrcamentoMapper orcamentoMapper;
 
-    public void save(OrcamentoInputDTO orcamentoDTO) {
-         orcamentoMapper.toEntity(orcamentoDTO);
+    public void save(OrcamentoDTO orcamentoDTO) {
+        try {
+            Orcamento orcamento = OrcamentoMapper.toEntity(orcamentoDTO);
+            for (Servico servico :
+                    orcamento.getServicos()) {
+                orcamento.adicionarServico(servico);
+                Servico servico2 = servicoRepository.save(servico);
+                orcamento = orcamentoRepository.save(orcamento);
+                System.out.println(servico2.getOrcamentos());
+                System.out.println(orcamento.getServicos());
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public List<OrcamentoResponse> findAll() {

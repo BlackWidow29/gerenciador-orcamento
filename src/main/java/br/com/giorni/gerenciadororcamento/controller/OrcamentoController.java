@@ -23,7 +23,7 @@ public class OrcamentoController {
     private OrcamentoService orcamentoService;
 
     @PostMapping
-    public void save(@RequestBody OrcamentoInputDTO orcamentoDTO) {
+    public void save(@RequestBody OrcamentoDTO orcamentoDTO) {
         orcamentoService.save(orcamentoDTO);
     }
 
