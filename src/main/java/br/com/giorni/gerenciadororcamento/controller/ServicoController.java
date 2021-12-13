@@ -44,10 +44,10 @@ public class ServicoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-//    @PutMapping
-//    public ResponseEntity<?> update(@RequestBody ServicoDTO servicoDTO){
-//        return ResponseEntity.ok(servicoService.update(servicoDTO));
-//    }
+    @PutMapping
+    public ResponseEntity<?> update(@RequestBody ServicoDTO servicoDTO){
+        return ResponseEntity.ok(servicoService.update(servicoDTO));
+    }
 
     @DeleteMapping(path = {"/{id}"})
     public ResponseEntity<?> delete(@PathVariable Long id){

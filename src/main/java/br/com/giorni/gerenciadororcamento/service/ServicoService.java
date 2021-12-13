@@ -67,9 +67,6 @@ public class ServicoService {
        }catch (Exception e){
            return false;
        }
-
-
-
     }
 
     public List<ServicoResponse> findAll() {
@@ -115,9 +112,27 @@ public class ServicoService {
         return Optional.empty();
     }
 
-//    public MaterialServicoResponse update(MaterialServicoDTO materialServicoDTO) {
-//
-//    }
+    public boolean update(ServicoDTO servicoDTO) {
+        Servico servico = ServicoMapper.toEntity(servicoDTO);
+        for (Auxiliar auxiliar:
+                servico.getAuxiliares()) {
+            auxiliar.setDisponibilidade(false);
+            auxiliarRepository.save(auxiliar);
+        }
+        servico = servicoRepository.save(servico);
+        try{
+            for (MaterialServico materialServico:
+                    servico.getMateriais()) {
+                materialServico.setServico(servico);
+                materialServico.AtualizarQuantidadeMaterial();
+                materialRepository.save(materialServico.getMaterial());
+                materialServicoService.save(materialServico);
+            }
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
 
     public boolean delete(Long id) {
         Optional<Servico> servico = servicoRepository.findById(id);
