@@ -51,6 +51,7 @@ public class OrcamentoMapper {
                 .observacoes(orcamentoDTO.getObservacoes())
                 .servicos(servicos)
                 .cliente(clienteRepository.findById(orcamentoDTO.getIdCliente()).orElseThrow(IllegalArgumentException::new))
+                .valorTotal(servicos.stream().mapToDouble(Servico::getValorTotal).sum())
                 .build();
     }
 
