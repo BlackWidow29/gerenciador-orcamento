@@ -24,5 +24,7 @@ public class Empresa {
     private String bairro;
     private String logradouro;
     private String estado;
+    private String telefone;
+    private String email;
 
 }

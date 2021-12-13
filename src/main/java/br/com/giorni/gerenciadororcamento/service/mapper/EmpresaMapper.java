@@ -19,6 +19,8 @@ public class EmpresaMapper {
                 .cep(empresaDTO.getCep())
                 .cidade(empresaDTO.getCidade())
                 .estado(empresaDTO.getEstado())
+                .telefone(empresaDTO.getTelefone())
+                .email(empresaDTO.getEmail())
                 .build();
     }
 
@@ -32,6 +34,8 @@ public class EmpresaMapper {
                 .cep(empresa.getCep())
                 .cidade(empresa.getCidade())
                 .estado(empresa.getEstado())
+                .telefone(empresa.getTelefone())
+                .email(empresa.getEmail())
                 .build();
     }
 
@@ -46,6 +50,8 @@ public class EmpresaMapper {
                 .logradouro(empresa.getLogradouro())
                 .estado(empresa.getEstado())
                 .numero(empresa.getNumero())
+                .telefone(empresa.getTelefone())
+                .email(empresa.getEmail())
                 .build();
     }
 

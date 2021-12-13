@@ -3,6 +3,7 @@ package br.com.giorni.gerenciadororcamento.controller;
 import br.com.giorni.gerenciadororcamento.model.Empresa;
 import br.com.giorni.gerenciadororcamento.service.EmpresaService;
 import br.com.giorni.gerenciadororcamento.service.dto.EmpresaDTO;
+import br.com.giorni.gerenciadororcamento.service.response.EmpresaResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class EmpresaController {
     }
 
     @GetMapping
-    public List<EmpresaDTO> findAll() {
+    public List<EmpresaResponse> findAll() {
         return empresaService.findAll();
     }
 

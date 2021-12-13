@@ -18,4 +18,6 @@ public class EmpresaDTO {
     String bairro;
     String logradouro;
     String estado;
+    String telefone;
+    String email;
 }
