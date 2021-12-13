@@ -29,12 +29,10 @@ public class ServicoSemMaterialDTO {
     @JsonFormat(pattern = "yyyy-MM-dd")
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonProperty("data_inicial")
-    private LocalDate dtInicial;
+    private LocalDate datainicial;
     @JsonFormat(pattern = "yyyy-MM-dd")
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonProperty("data_final")
-    private LocalDate dtFinal;
+    private LocalDate datafinal;
     private List<AuxiliarDTO> auxiliares;
 }
