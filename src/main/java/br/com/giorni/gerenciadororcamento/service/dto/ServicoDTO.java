@@ -37,11 +37,8 @@ public class ServicoDTO {
     @JsonProperty("data_final")
     LocalDate dtFinal;
     @JsonProperty("material_servico")
-    @NonNull
     List<MaterialServicoDTO> materiais;
-    @NonNull
     List<AuxiliarDTO> auxiliares;
-    @NonNull
     List<OrcamentoDTO> orcamentos;
 
 }
