@@ -36,6 +36,7 @@ public class EmpresaMapper {
                 .estado(empresa.getEstado())
                 .telefone(empresa.getTelefone())
                 .email(empresa.getEmail())
+                .logradouro(empresa.getLogradouro())
                 .build();
     }
 
