@@ -11,8 +11,6 @@ public class MaterialServicoDTO {
     Long id;
     @JsonProperty("quantidade_material")
     Integer quantidadeMaterial;
-    @NonNull
     MaterialDTO material;
-    @NonNull
     ServicoDTO servico;
 }
