@@ -113,7 +113,9 @@ public class ServicoService {
     }
 
     public boolean update(ServicoDTO servicoDTO) {
+        System.out.println("antes do toEntity");
         Servico servico = ServicoMapper.toEntity(servicoDTO);
+        System.out.println("depois do toEntity");
         for (Auxiliar auxiliar:
                 servico.getAuxiliares()) {
             auxiliar.setDisponibilidade(false);
