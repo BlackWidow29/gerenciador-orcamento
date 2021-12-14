@@ -15,6 +15,6 @@ import java.util.List;
 public class MaterialServicoSemServicoResponse {
     @JsonProperty("quantidade_material")
     private Integer quantidadeMaterialNoServico;
-    @JsonProperty("materiais")
+    @JsonProperty("material")
     private MaterialSemFornecedorResponse informacoesSobreOMaterial;
 }
